@@ -20,6 +20,10 @@ Clone the git repo into your directory, navigate to the directory in your termin
 ## Usage
 Type node index.js or npm start to initiate and follow the prompts to add or view departments, roles, or employees, or update an employee's role.
 
+## Demo
+
+Demo coming soon!
+
 ## Contributing
 Fork this repository at Github and contact me about contributions: https://github.com/tmkeller/tmk-employee-management-system
 
