@@ -12,7 +12,7 @@ const connection = mysql.createConnection({
 
 connection.connect( function( err ) {
     if ( err ) throw err;
-    console.log( "Connected!" );
+    console.log( "Connected to database." );
     init();
 });
 
@@ -63,11 +63,9 @@ function init() {
                 // Put them all in an array assigned to the roleDept variable.
                 connection.query( `SELECT id, name FROM department`, function( err, res ) {
                     if ( err ) throw err;
-                    console.log( res );
                     // Build an array of objects with name/value pairs to use for the list of departments,
                     // So we can have the user select names, but enter IDs into the database.
                     let roleDept = res.map( function( roleObj ) { return { name: roleObj.name, value: roleObj.id } } );
-                    console.log( roleDept );
 
                     inquirer.prompt(
                         [
@@ -107,21 +105,17 @@ function init() {
                     // Build an array of objects with name/value pairs to use for the list of roles,
                     // So we can have the user select names, but enter IDs into the database.
                     let empRole = res1.map( function( roleObj ) { return { name: roleObj.title, value: roleObj.id } } );
-                    console.log( "empRole", empRole );
 
                     // Get a list of all managers from SQL database
                     // Put them all in an array assigned to the managersEmployee variable.
                     connection.query( `SELECT id, first_name, last_name, manager_id FROM employee WHERE manager_id IS null`, function( err2, res2 ) {
                         if ( err2 ) throw err2;
 
-                        console.log( "res2", res2 );
-
                         let empMan = res2.map( function( roleObj ) { return {
                             name: `${ roleObj.last_name }, ${ roleObj.first_name}`,
                             value: roleObj.id
                         }});
 
-                        console.log( empMan );
                         empMan.push({ name: "None", value: null });
 
                         inquirer.prompt(
@@ -256,7 +250,6 @@ function sandCatLogOff() {
 
 // Add a department, role, or employee.
 function addToTable( table, row ) {
-    console.log( "addToTable", table, row );
     connection.query( `INSERT INTO ${ table } SET ?`, row, function( err, res ) {
         if ( err ) throw err;
         console.log( `${ res.affectedRows } new entry added to ${ table }!` );

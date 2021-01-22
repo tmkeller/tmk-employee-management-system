@@ -15,7 +15,7 @@
 A CLI management system for employees in a corporation. Built using node, mysql, inquirer, and the custom console.table package.
 
 ## Installation
-Clone the git repo into your directory, navigate to the directory in your terminal, and type npm i to install all dependencies.
+Clone the git repo into your directory, navigate to the directory in your terminal, and type npm i to install all dependencies. The sql directory contains an SQL file for database schema, along with a diagram, and a proper seed.
 
 ## Usage
 Type node index.js or npm start to initiate and follow the prompts to add or view departments, roles, or employees, or update an employee's role.
