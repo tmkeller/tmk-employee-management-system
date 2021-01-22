@@ -181,7 +181,12 @@ function init() {
                 console.log( "\nView employees:\n" );
 
                 // Build query.
-                let query = `SELECT * FROM employee LEFT JOIN role ON employee.role_id=role.id`;
+                let query = `SELECT employee.id AS 'ID', employee.first_name AS 'First Name', 
+                            employee.last_name AS 'Last Name', role.title AS 'Title', 
+                            role.salary AS 'Salary', department.name AS 'Department',
+                            employee.manager_id AS 'Manager ID' 
+                            FROM employee LEFT JOIN role ON employee.role_id=role.id 
+                            LEFT JOIN department ON role.department_id=department.id`;
                 connection.query( query, function( err, res ) {
                     if ( err ) throw err;
                     viewTable( 'employee', res );

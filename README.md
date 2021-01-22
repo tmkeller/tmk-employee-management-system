@@ -22,7 +22,7 @@ Type node index.js or npm start to initiate and follow the prompts to add or vie
 
 ## Demo
 
-Demo coming soon!
+![App execution video](./assets/employee-management-demo.gif)
 
 ## Contributing
 Fork this repository at Github and contact me about contributions: https://github.com/tmkeller/tmk-employee-management-system
