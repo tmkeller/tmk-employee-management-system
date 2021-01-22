@@ -169,8 +169,9 @@ function init() {
                 
             case 'View roles':
                 console.log( "\nView roles:\n" );
-
-                connection.query( `SELECT * FROM role JOIN department ON role.department_id=department.id`, function( err, res ) {
+                let rolesQuery = `SELECT role.title AS 'Title', role.salary AS 'Salary', department.name
+                    AS 'Department' FROM role INNER JOIN department ON role.department_id=department.id`
+                connection.query( rolesQuery, function( err, res ) {
                     if ( err ) throw err;
                     viewTable( 'role', res );
                 });
